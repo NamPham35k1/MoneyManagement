@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695243141872",
+    "project_id": "app31-loan-vip",
+    "storage_bucket": "app31-loan-vip.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695243141872:android:11a17d64b9ca982ed20835",
+        "android_client_info": {
+          "package_name": "com.loan.calculator.loantools"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK84oGLCvMBSGVUWXLtMM7_rVFhYjKaxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.loan.calculator.loantools.ui.fragment.framgent_home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticFragment"
+            app:destination="@id/compareFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_toolFragment"
+            app:destination="@id/toolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compareFragment"
+        android:name="com.loan.calculator.loantools.ui.fragment.fragment_compare.CompareFragment"
+        android:label="StatisticFragment" >
+        <action
+            android:id="@+id/action_statisticFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_statisticFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_compareFragment_to_toolFragment"
+            app:destination="@id/toolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.loan.calculator.loantools.ui.fragment.fragment_settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_statisticFragment"
+            app:destination="@id/compareFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_toolFragment"
+            app:destination="@id/toolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toolFragment"
+        android:name="com.loan.calculator.loantools.ui.fragment.fragment_tool.ToolFragment"
+        android:label="fragment_tool"
+        tools:layout="@layout/fragment_tool" >
+        <action
+            android:id="@+id/action_toolFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_toolFragment_to_compareFragment"
+            app:destination="@id/compareFragment" />
+        <action
+            android:id="@+id/action_toolFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+</navigation>
