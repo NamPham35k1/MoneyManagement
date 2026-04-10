@@ -154,6 +154,8 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             startActivity(intent)
         }
     }
+
+
     private fun requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(
