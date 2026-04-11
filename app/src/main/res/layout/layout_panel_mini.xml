@@ -3,6 +3,5 @@
     android:layout_width="60dp"
     android:layout_height="60dp"
     android:background="@drawable/bg_panel"
-
     android:padding="6dp"
     android:src="@drawable/ic_phone_on" />

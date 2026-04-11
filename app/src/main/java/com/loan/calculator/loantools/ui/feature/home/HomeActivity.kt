@@ -25,17 +25,33 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.loan.calculator.loantools.service.OverlayService
+import com.loan.calculator.loantools.service.TiltPrivacyManager
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
     override fun createViewModel(): Class<HomeVM> = HomeVM::class.java
     override fun getViewDataBinding(): ActivityHomeBinding = ActivityHomeBinding.inflate(layoutInflater)
-//    private var collapseBanner: CollapseBannerManager? = null
 
+    //    private var collapseBanner: CollapseBannerManager? = null
+    private var tiltManager: TiltPrivacyManager? = null
     private lateinit var panelManager: PanelManager
     override fun initView() {
+        binding.seekBar.max = 100
+        binding.seekBar.progress = 80
+        //
+        binding.seekBarSensitivity.progress = 23
+        binding.tvPercentSentivity.text = "23°"
+
+        tiltManager?.start()
+
         panelManager = PanelManager(this)
+
+        tiltManager = TiltPrivacyManager(this) {
+
+        }
+        tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.LEFT
+
         enableEdgeToEdge()
         onBottomClick()
 //        collapseBanner = loadCollapseBanner(
@@ -58,6 +74,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             Log.d("Toggle", "State: $isOn")
         }
     }
+
     override fun onResume() {
         super.onResume()
 
@@ -65,10 +82,15 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
         toggle.setChecked(sharePrefApp.checktoggle)
     }
+
     private fun seekBar() {
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.tvPercent.text = "$progress%"
+                val alpha = progress / 100f
+                panelManager.maxDimAlpha = alpha
+
+                binding.tvPercent.text = "${(alpha * 100).toInt()}%"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -76,7 +98,9 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         })
         binding.seekBarSensitivity.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding.tvPercentSentivity.text = "$progress°"
+                val angle = progress.coerceAtLeast(5)
+                binding.tvPercentSentivity.text = "$angle°"
+                panelManager.updateAngle(angle.toFloat())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -95,12 +119,16 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         binding.rgDirection.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.rbLeft -> {
+                tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.LEFT
                 }
 
                 R.id.rbRight -> {
+                    tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.RIGHT
                 }
 
                 R.id.rbBoth -> {
+                    tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.BOTH
+
                 }
             }
         }
@@ -127,6 +155,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             }
         }
     }
+
     private fun requestOverlayPermission() {
         val intent = Intent(
             Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
@@ -134,9 +163,11 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         )
         startActivity(intent)
     }
+
     private fun canDrawOverlay(): Boolean {
         return Settings.canDrawOverlays(this)
     }
+
     private fun startOverlayService() {
         val intent = Intent(this, OverlayService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -145,6 +176,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             startService(intent)
         }
     }
+
     private fun requestOverlayPermissionNotification() {
         if (!Settings.canDrawOverlays(this)) {
             val intent = Intent(
@@ -165,6 +197,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             )
         }
     }
+
     override fun onBackPressedSystem() {
         finishAffinity()
     }

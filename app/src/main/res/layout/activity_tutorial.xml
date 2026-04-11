@@ -44,7 +44,7 @@
             android:paddingVertical="10dp"
             android:paddingHorizontal="@dimen/_3sdp"
             android:text="@string/next"
-            android:textColor="@color/blue_in_app"
+            android:textColor="@color/orange_in_app"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/ll_circle"
             app:layout_constraintEnd_toEndOf="parent"
