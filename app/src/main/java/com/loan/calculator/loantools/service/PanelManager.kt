@@ -299,6 +299,8 @@ class PanelManager(private val context: Context) {
     }
 
 
+
+
     private fun updateBlackViewInteraction(shouldDim: Boolean) {
         val view = blackView ?: return
         val params = view.layoutParams as? WindowManager.LayoutParams ?: return
@@ -315,6 +317,10 @@ class PanelManager(private val context: Context) {
             view.alpha = 0f
             params.flags = params.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
         }
+
+
+
+
 
         try {
             windowManager.updateViewLayout(view, params)
