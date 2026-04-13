@@ -95,7 +95,7 @@
 
     <style name="RoundedImageView">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
+        <item name="cornerSize">16dp</item>
     </style>
 
     <style name="RoundedImageView16dpStroke">
@@ -127,7 +127,7 @@
     <style name="seekbarApp">
         <item name="android:progressDrawable">@drawable/seekbar_progress_purple</item>
         <item name="android:thumb">@drawable/ic_circle_thumb_false</item>
-        <item name="android:thumbOffset">0dp</item>
+        <item name="android:thumbOffset">8dp</item>
         <item name="android:splitTrack">false</item>
         <item name="android:max">100</item>
         <item name="android:min" tools:ignore="NewApi">0</item>

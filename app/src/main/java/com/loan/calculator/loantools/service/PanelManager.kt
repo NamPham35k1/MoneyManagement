@@ -1,7 +1,9 @@
 package com.loan.calculator.loantools.service
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PixelFormat
+import android.graphics.drawable.LayerDrawable
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,6 +13,8 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.loan.calculator.loantools.R
 import com.loan.calculator.loantools.extention.logDebug
+import com.loan.calculator.loantools.utils.PatternRepository
+import com.loan.calculator.loantools.utils.PrefUtils
 import com.loan.calculator.loantools.utils.hideOverlay
 import com.loan.calculator.loantools.utils.showBlackOverlay
 
@@ -30,37 +34,49 @@ class PanelManager(private val context: Context) {
         WRAP_CONTENT,
         WRAP_CONTENT,
         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
         PixelFormat.TRANSLUCENT
     )
 
     fun showPanel() {
+        if (isShowing || panelView != null) return
 
-        if (isShowing) return
+        if (panelView?.isAttachedToWindow == true) return
+
         removeAll()
+
         panelView = LayoutInflater.from(context)
             .inflate(R.layout.layout_panel, null)
+
         setupDrag(panelView!!)
+
         try {
             windowManager.addView(panelView, params)
             isShowing = true
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
         updateIcons()
 
         // tilt
         panelView?.findViewById<View>(R.id.btnFeature)?.setOnClickListener {
+
             if (currentPrivacyType == PrivacyType.TILT) {
                 currentPrivacyType = PrivacyType.NONE
                 tiltManager?.stop()
-                tiltManager = null
                 context.hideOverlay(blackView)
                 blackView = null
+
             } else {
                 currentPrivacyType = PrivacyType.TILT
-                tiltManager?.stop()
-                tiltManager = null
+
+                if (tiltManager == null) {
+                    tiltManager = TiltPrivacyManager(context) { shouldDim ->
+                        if (currentPrivacyType != PrivacyType.TILT) return@TiltPrivacyManager
+                        updateBlackViewInteraction(shouldDim)
+                    }
+                }
 
                 blackView = context.showBlackOverlay(blackView) {
                     panelView?.let {
@@ -69,13 +85,9 @@ class PanelManager(private val context: Context) {
                     }
                 }
 
-                tiltManager = TiltPrivacyManager(context) { shouldDim ->
-                    if (currentPrivacyType != PrivacyType.TILT) return@TiltPrivacyManager
-
-                    updateBlackViewInteraction(shouldDim)
-                }
                 tiltManager?.start()
             }
+
             updateIcons()
         }
 
@@ -142,50 +154,54 @@ class PanelManager(private val context: Context) {
 
 
     // all screen
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupDrag(view: View) {
-
         var initialX = 0
         var initialY = 0
         var initialTouchX = 0f
         var initialTouchY = 0f
         var isDragging = false
 
-        view.setOnTouchListener { v, event ->
-
+        val touchListener = View.OnTouchListener { v, event ->
             when (event.action) {
-
                 MotionEvent.ACTION_DOWN -> {
                     initialX = params.x
                     initialY = params.y
                     initialTouchX = event.rawX
                     initialTouchY = event.rawY
                     isDragging = false
-                    true
+                    false
                 }
 
                 MotionEvent.ACTION_MOVE -> {
                     val dx = event.rawX - initialTouchX
                     val dy = event.rawY - initialTouchY
 
-                    if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+                    if (Math.abs(dx) > 15 || Math.abs(dy) > 15) {
                         isDragging = true
+                        params.x = initialX + dx.toInt()
+                        params.y = initialY + dy.toInt()
+                        windowManager.updateViewLayout(panelView ?: miniView ?: view, params)
+                        true // Đã drag thì nuốt sự kiện để không gọi Click
+                    } else {
+                        false
                     }
-
-                    params.x = initialX + dx.toInt()
-                    params.y = initialY + dy.toInt()
-
-                    windowManager.updateViewLayout(view, params)
-                    true
                 }
 
                 MotionEvent.ACTION_UP -> {
-                    if (!isDragging) {
-                        v.performClick()
-                    }
-                    true
-                }
 
+                    isDragging
+                }
                 else -> false
+            }
+        }
+
+        view.setOnTouchListener(touchListener)
+
+        if (view is android.view.ViewGroup) {
+            for (i in 0 until view.childCount) {
+                val child = view.getChildAt(i)
+                child.setOnTouchListener(touchListener)
             }
         }
     }
@@ -208,17 +224,9 @@ class PanelManager(private val context: Context) {
         )
 
         // status bar
-        val statusParams = WindowManager.LayoutParams(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            getStatusBarHeight(),
-            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
-            PixelFormat.TRANSLUCENT
-        )
+
         try {
             windowManager.addView(blackView, blackParams)
-            windowManager.addView(blackView, statusParams)
 
             panelView?.let {
                 windowManager.removeView(it)
@@ -284,22 +292,15 @@ class PanelManager(private val context: Context) {
         tiltManager?.maxAngle = angle
     }
 
-    // status bar
 
-    val statusBarView = View(context).apply {
-        setBackgroundColor(android.graphics.Color.BLACK)
+    fun updatePanelOpacity(progress: Int) {
+        val alpha = (progress * 255) / 100
+
+        val bg = panelView?.background as? LayerDrawable ?: return
+
+        val fillDrawable = bg.getDrawable(0)
+        fillDrawable.alpha = alpha
     }
-    fun getStatusBarHeight(): Int {
-        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-        return if (resourceId > 0) {
-            context.resources.getDimensionPixelSize(resourceId)
-        } else {
-            0
-        }
-    }
-
-
-
 
     private fun updateBlackViewInteraction(shouldDim: Boolean) {
         val view = blackView ?: return
@@ -318,14 +319,27 @@ class PanelManager(private val context: Context) {
             params.flags = params.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
         }
 
-
-
-
-
         try {
             windowManager.updateViewLayout(view, params)
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+//    private fun getDrawableIdFromPattern(id: Int): Int {
+//        val pattern = PatternRepository.getAllPatterns().find { it.id == id }
+//        return pattern?.drawableRes ?: R.drawable.pattern_1
+//    }
+
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        @Volatile
+        private var INSTANCE: PanelManager? = null
+
+        fun getInstance(context: Context): PanelManager {
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: PanelManager(context.applicationContext).also { INSTANCE = it }
+            }
         }
     }
 }

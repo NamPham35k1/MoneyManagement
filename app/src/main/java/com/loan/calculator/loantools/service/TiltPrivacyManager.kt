@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.util.Log
+import com.loan.calculator.loantools.utils.PrefUtils
 import kotlin.math.abs
 import kotlin.math.atan2
 class TiltPrivacyManager(
@@ -28,8 +29,9 @@ class TiltPrivacyManager(
 
         sensorListener = object : SensorEventListener {
 
-
             override fun onSensorChanged(event: SensorEvent) {
+                tiltMode = TiltState.mode
+
                 val x = event.values[0]
                 val y = event.values[1]
                 val z = event.values[2]
@@ -37,8 +39,7 @@ class TiltPrivacyManager(
 
                 val angle = Math.toDegrees(
                     atan2(x.toDouble(), g)
-                ).toFloat()*2f
-                Log.d("maxAngle", "maxAngle: $maxAngle")
+                ).toFloat() * 2f
 
                 var shouldDim = false
 
@@ -71,6 +72,9 @@ class TiltPrivacyManager(
         sensorListener?.let {
             sensorManager?.unregisterListener(it)
         }
+    }
+    fun updateTiltMode(mode: TiltMode) {
+        this.tiltMode = mode
     }
 
 }

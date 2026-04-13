@@ -36,7 +36,7 @@ class LanguageSettingActivity : BaseActivity<LanguageViewModel, ActivityLanguage
         setUpListLang()
         binding.rclLanguage.adapter = adapter
 
-        AdsHelper.loadBannerAds(this,this,binding.bannerContainerView, Constants.AdsKey.banner_setting)
+//        AdsHelper.loadBannerAds(this,this,binding.bannerContainerView, Constants.AdsKey.banner_setting)
     }
 
     private fun setUpListLang() {

@@ -22,10 +22,19 @@ import android.provider.Settings
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.widget.CompoundButton
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import com.loan.calculator.loantools.extention.logDebug
 import com.loan.calculator.loantools.service.OverlayService
 import com.loan.calculator.loantools.service.TiltPrivacyManager
+import com.loan.calculator.loantools.service.TiltState
+import com.loan.calculator.loantools.ui.feature.SettingActivity
+import com.loan.calculator.loantools.ui.feature.how_to_use.HowToUseActivity
+import com.loan.calculator.loantools.ui.feature.pattern.PatternActivity
+import com.loan.calculator.loantools.ui.feature.pattern.PatternAdapter
+import com.loan.calculator.loantools.utils.PatternRepository
+import com.loan.calculator.loantools.utils.PrefUtils
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
@@ -45,7 +54,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
         tiltManager?.start()
 
-        panelManager = PanelManager(this)
+        panelManager = PanelManager.getInstance(this)
 
         tiltManager = TiltPrivacyManager(this) {
 
@@ -61,11 +70,23 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 //            binding.frAds
 //        )
         seekBar()
+        dataPattern()
         toggleOverlayPanel()
+        logDebug("CheckInToggle","Home ${sharePrefApp.checktoggle}")
+
     }
 
     override fun bindViewModel() {
+        binding.tvSeeMore.tap {
+            showActivity(PatternActivity::class.java, null)
+        }
+        binding.icHowToUse.tap {
+            showActivity(HowToUseActivity::class.java, null)
+        }
 
+        binding.icSetting.tap {
+            showActivity(SettingActivity::class.java, null)
+        }
     }
 
     private fun onBottomClick() {
@@ -81,6 +102,11 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         val toggle = findViewById<SlideToggleView>(R.id.slideToggle)
 
         toggle.setChecked(sharePrefApp.checktoggle)
+        //
+        binding.switchOverlay.isChecked = sharePrefApp.switchTurnService
+
+        //  disable nếu toggle OFF
+        binding.switchOverlay.isEnabled = sharePrefApp.checktoggle
     }
 
     private fun seekBar() {
@@ -110,48 +136,66 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         binding.seekBarControlPanel.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.tvPerentOpacity.text = "$progress%"
+                panelManager.updatePanelOpacity(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-        binding.rgDirection.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                R.id.rbLeft -> {
-                tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.LEFT
-                }
-
-                R.id.rbRight -> {
-                    tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.RIGHT
-                }
-
-                R.id.rbBoth -> {
-                    tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.BOTH
-
-                }
+        binding.rgDirection.setOnCheckedChangeListener { _, checkedId ->
+            TiltState.mode = when (checkedId) {
+                R.id.rbLeft -> TiltPrivacyManager.TiltMode.LEFT
+                R.id.rbRight -> TiltPrivacyManager.TiltMode.RIGHT
+                else -> TiltPrivacyManager.TiltMode.BOTH
             }
         }
+
     }
 
     private fun toggleOverlayPanel() {
         val toggle = findViewById<SlideToggleView>(R.id.slideToggle)
 
+        val switchListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
+            if (sharePrefApp.checktoggle) {
+                sharePrefApp.switchTurnService = isChecked
+
+                if (isChecked) {
+                    if (!canDrawOverlay()) {
+                        requestOverlayPermission()
+                        binding.switchOverlay.isChecked = false
+                    } else {
+                        requestNotificationPermission()
+                        if (!panelManager.isShowing()) {
+                            panelManager.showPanel()
+                        }
+                        startOverlayService()
+                    }
+                } else {
+                    panelManager.hidePanel()
+                    stopService(Intent(this, OverlayService::class.java))
+                }
+            }
+        }
+
+        binding.switchOverlay.setOnCheckedChangeListener(switchListener)
+
+        // TOGGLE MASTER (SlideToggleView)
         toggle.onToggleChanged = { isOn ->
             sharePrefApp.checktoggle = isOn
-            if (isOn) {
-                if (!canDrawOverlay()) {
-                    requestOverlayPermission()
-                } else {
-                    requestNotificationPermission()
-                    if (!panelManager.isShowing()) {
-                        panelManager.showPanel()
-                    }
-                    startOverlayService()
-                }
-            } else {
+
+            if (!isOn) {
+                sharePrefApp.switchTurnService = false
+
+                binding.switchOverlay.setOnCheckedChangeListener(null)
+                binding.switchOverlay.isChecked = false
+                binding.switchOverlay.isEnabled = false
+                binding.switchOverlay.setOnCheckedChangeListener(switchListener)
+
                 panelManager.hidePanel()
                 stopService(Intent(this, OverlayService::class.java))
+            } else {
+                binding.switchOverlay.isEnabled = true
             }
         }
     }
@@ -187,7 +231,6 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         }
     }
 
-
     private fun requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(
@@ -196,6 +239,15 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
                 1001
             )
         }
+    }
+
+    private fun dataPattern() {
+        val data = PatternRepository.getAllPatterns()
+        val adapter = PatternHomeAdapter(data) { sharePrefApp.idPattern = it }
+        binding.rvPattern.adapter = adapter
+
+        adapter.selectedId = sharePrefApp.idPattern
+
     }
 
     override fun onBackPressedSystem() {

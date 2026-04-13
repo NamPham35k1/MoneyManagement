@@ -14,7 +14,7 @@
         android:src="@drawable/ic_phone_on"
         android:padding="3dp"
         android:layout_marginEnd="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+     />
 
     <ImageView
         android:id="@+id/btnEye"
@@ -23,7 +23,7 @@
         android:src="@drawable/ic_eye_on"
         android:padding="3dp"
         android:layout_marginEnd="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+    />
 
     <ImageView
         android:id="@+id/btnMiniSize"
@@ -31,7 +31,6 @@
         android:layout_height="36dp"
         android:src="@drawable/ic_fomat_size"
         android:padding="3dp"
-
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+     />
 
 </LinearLayout>
