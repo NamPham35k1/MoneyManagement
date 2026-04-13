@@ -302,6 +302,8 @@ class PanelManager(private val context: Context) {
         fillDrawable.alpha = alpha
     }
 
+
+
     private fun updateBlackViewInteraction(shouldDim: Boolean) {
         val view = blackView ?: return
         val params = view.layoutParams as? WindowManager.LayoutParams ?: return
