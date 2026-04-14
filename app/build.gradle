@@ -25,6 +25,8 @@ android {
         archivesBaseName = "APP37_Privacy_Display_Screen_Filter${versionName}_${formattedDate}"
     }
 
+
+
     buildTypes {
         release {
             minifyEnabled false
