@@ -37,7 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.loan.calculator.loantools.custome_view.EllipsizeTextView
+            <com.screenguard.privacy.screenfilter.custome_view.EllipsizeTextView
                 android:id="@+id/tvHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 android:gravity="center"
                 android:paddingHorizontal="20dp"
                 android:text="@string/apply_lfo"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout

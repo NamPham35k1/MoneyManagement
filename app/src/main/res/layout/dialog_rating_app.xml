@@ -107,8 +107,8 @@
                     android:layout_gravity="center"
                     android:numStars="5"
                     android:progress="5"
-                    android:progressTint="@color/blue_in_app"
-                    android:secondaryProgressTint="@color/blue_in_app"
+                    android:progressTint="@color/orange_gradient_start"
+                    android:secondaryProgressTint="@color/orange_gradient_end"
                     android:stepSize="1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -169,10 +169,10 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/lato_bold"
+                    android:gravity="center"
                     android:text="@string/Rate_Us"
+                    android:background="@color/orange_main"
                     android:textAllCaps="false"
-                    android:textColor="@color/black_in_app"
-    android:gravity="center"
                     android:textSize="14sp" />
 
                 <androidx.appcompat.widget.AppCompatButton

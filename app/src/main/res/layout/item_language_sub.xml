@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.loan.calculator.loantools.custome_view.EllipsizeTextView
+    <com.screenguard.privacy.screenfilter.custome_view.EllipsizeTextView
         android:id="@+id/tv_language"
         android:layout_width="0dp"
         android:layout_height="0dp"

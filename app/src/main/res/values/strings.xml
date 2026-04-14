@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Personal Loan - Loan Tool</string>
+    <string name="app_name" translatable="false">Screen Guard: Privacy Filter</string>
     <string name="empty" translatable="false" />
 
     <string name="Go_to_setting">Go to setting</string>
@@ -81,4 +81,17 @@
     <string name="rate">Rate</string>
     <string name="lanuage">Language</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="success">Success</string>
+    <string name="screen_dimming_is_now_active_to_protect_your_privacy">Screen dimming is now active to protect your privacy</string>
+    <string name="screen_dimming_turned_off">Screen dimming turned off</string>
+    <string name="notification">Notification</string>
+    <string name="overlay">Overlay</string>
+    <string name="turn_on_to_enable_the_feature">Turn on to enable the feature</string>
+    <string name="adjust_overlay_opacity_til_sensitivity_panel_opacity"><![CDATA[Adjust Overlay Opacity -> Til Sensitivity -> Panel Opacity]]></string>
+    <string name="now_enjoy_the_app_s_features">Now enjoy the app\'s features.</string>
+    <string name="patterns">Patterns</string>
+    <string name="see_more">See more</string>
+    <string name="opacity">Opacity</string>
+    <string name="both_left_amp_right"><![CDATA[Both (Left & Right)]]></string>
+    <string name="share">Share</string>
 </resources>

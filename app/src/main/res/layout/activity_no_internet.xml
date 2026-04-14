@@ -8,7 +8,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_160sdp"
         android:src="@drawable/img_no_internet" />
 
     <TextView
@@ -36,13 +36,13 @@
 
     <TextView
         android:id="@+id/tv_try_again"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/lato_bold"
         android:gravity="center_horizontal"
-        android:background="@drawable/bg_btn_calculate"
+        android:background="@drawable/bg_button_blue"
         android:paddingHorizontal="@dimen/_40sdp"
         android:paddingVertical="@dimen/_10sdp"
         android:text="@string/try_again"

@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace 'com.loan.calculator.loantools'
+    namespace 'com.screenguard.privacy.screenfilter'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.loan.calculator.loantools"
+        applicationId "com.screenguard.privacy.screenfilter"
         minSdk 24
         targetSdk 35
         versionCode 100
@@ -22,7 +22,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         def formattedDate = new Date().format('MM.dd.yyyy')
-        archivesBaseName = "APP31 Loan VIP${versionName}_${formattedDate}"
+        archivesBaseName = "APP37_Privacy_Display_Screen_Filter${versionName}_${formattedDate}"
     }
 
     buildTypes {
@@ -168,4 +168,6 @@ dependencies {
     implementation 'com.kizitonwose.calendar:view:2.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    //
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.3'
 }

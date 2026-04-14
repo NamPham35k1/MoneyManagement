@@ -34,7 +34,7 @@
 -keep class retrofit2.** { *; }
 -keep interface retrofit2.** { *; }
 -dontwarn retrofit2.**-keep
--keep class com.loan.calculator.loantools.model.** { *; }
+-keep class com.screenguard.privacy.screenfilter.model.** { *; }
 
 -keep class * implements dagger.hilt.EntryPoint
 

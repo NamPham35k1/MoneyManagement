@@ -29,7 +29,6 @@
         android:gravity="start"
         android:paddingHorizontal="16dp"
         android:text="@string/permission"
-        android:textColor="@color/neutral_800"
         android:textSize="18sp" />
 
     <TextView
@@ -61,14 +60,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:visibility="visible"
-                app:srcCompat="@drawable/img_per" />
+                app:srcCompat="@drawable/permission" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_r16"
+                android:background="@drawable/bg_button_bts"
                 android:elevation="2dp"
                 android:paddingHorizontal="@dimen/_15sdp"
                 android:paddingVertical="10dp">
@@ -80,8 +79,7 @@
                     android:layout_alignParentStart="true"
                     android:fontFamily="@font/poppins_semi_bold"
                     android:paddingTop="4dp"
-                    android:text="overlay"
-                    android:textColor="@color/black"
+                    android:text="@string/overlay"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_r16"
+                android:background="@drawable/bg_button_bts"
                 android:elevation="2dp"
                 android:paddingHorizontal="@dimen/_15sdp"
                 android:paddingVertical="10dp">
@@ -121,142 +119,14 @@
                     android:layout_alignParentStart="true"
                     android:fontFamily="@font/poppins_semi_bold"
                     android:paddingTop="4dp"
-                    android:text="record audio"
-                    android:textColor="@color/black"
+                    android:text="@string/notification"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/swMicro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:checked="false"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7"
-                    android:thumb="@drawable/custom_thumb"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:track="@drawable/custom_track" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_r16"
-                android:elevation="2dp"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="10dp"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/qwe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:paddingTop="4dp"
-                    android:text="camera"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/swCamera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:checked="false"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7"
-                    android:thumb="@drawable/custom_thumb"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:track="@drawable/custom_track" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ctNoti"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_white_r16"
-                android:elevation="2dp"
-                android:layout_marginBottom="10dp"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="10dp">
-
-                <TextView
-                    android:id="@+id/oqjwe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:paddingTop="4dp"
-                    android:text="noti"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/swNoti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:checked="false"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7"
-                    android:thumb="@drawable/custom_thumb"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:track="@drawable/custom_track" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ctStorage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:background="@drawable/bg_white_r16"
-                android:elevation="2dp"
-                android:layout_marginBottom="10dp"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="10dp">
-
-                <TextView
-                    android:id="@+id/fas1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:paddingTop="4dp"
-                    android:text="storage"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/swStorage"
+                    android:id="@+id/swNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -283,7 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="16dp"
-        android:background="@drawable/bg_white_r16"
+        android:background="@drawable/bg_button_blue"
         android:fontFamily="@font/poppins_semi_bold"
         android:gravity="center"
         android:layout_marginBottom="10dp"

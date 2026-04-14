@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.loan.calculator.loantools.utils.SlideToggleView
+    <com.screenguard.privacy.screenfilter.utils.SlideToggleView
         android:id="@+id/slideToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,6 +76,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +113,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
-                        android:text="Opacity" />
+                        android:text="@string/opacity" />
 
                     <TextView
                         android:id="@+id/tvPercent"
@@ -152,7 +153,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:text="Patterns" />
+                        android:text="@string/patterns" />
 
                     <TextView
                         android:id="@+id/tvSeeMore"
@@ -160,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:gravity="end"
-                        android:text="See more"
+                        android:text="@string/see_more"
                         android:textColor="#FF7500" />
                 </LinearLayout>
 
@@ -199,7 +200,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.9"
-                        android:text="Opacity" />
+                        android:text="@string/opacity" />
 
                     <TextView
                         android:id="@+id/tvPercentSentivity"
@@ -285,8 +286,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/radio_button_tint"
-                        android:checked="true"
-                        android:text="Left"
+                        android:text="@string/left"
                         android:textColor="@color/white" />
 
                     <RadioButton
@@ -294,7 +294,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/radio_button_tint"
-                        android:text="Right"
+                        android:text="@string/right"
                         android:textColor="@color/white" />
 
                     <RadioButton
@@ -302,7 +302,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/radio_button_tint"
-                        android:text="Both (Left &amp; Right)"
+
+                        android:checked="true"
+                        android:text="@string/both_left_amp_right"
                         android:textColor="@color/white" />
 
                 </RadioGroup>
@@ -343,7 +345,6 @@
                         android:id="@+id/switch_overlay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
                         android:layout_weight="0.1"
                         android:checked="false"
                         android:scaleX="0.75"
@@ -405,4 +406,98 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/viewDim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+    <!--        firrst in app-->
+    <ImageView
+        android:id="@+id/imghtuse_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/htuse_1"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="328:160"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvhts_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_htuse"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/turn_on_to_enable_the_feature"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imghtuse_1" />
+
+    <ImageView
+        android:id="@+id/imghtuse_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/htuse_2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:4.6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvhts_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_htuse"
+        android:gravity="center"
+
+        android:padding="16dp"
+        android:text="@string/adjust_overlay_opacity_til_sensitivity_panel_opacity"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/imghtuse_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imghtuse_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/htuse_3"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="3:4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvhts_3" />
+
+    <TextView
+        android:id="@+id/tvhts_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/bg_htuse"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/now_enjoy_the_app_s_features"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

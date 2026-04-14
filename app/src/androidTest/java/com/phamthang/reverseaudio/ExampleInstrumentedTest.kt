@@ -1,4 +1,4 @@
-package com.loan.calculator.loantools
+package com.screenguard.privacy.screenfilter
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.loan.calculator.loantools", appContext.packageName)
+        assertEquals("com.screenguard.privacy.screenfilter", appContext.packageName)
     }
 }

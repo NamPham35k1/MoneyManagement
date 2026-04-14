@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.loan.calculator.loantools.ui.fragment.framgent_home.HomeFragment"
+        android:name="com.screenguard.privacy.screenfilter.ui.fragment.framgent_home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/compareFragment"
-        android:name="com.loan.calculator.loantools.ui.fragment.fragment_compare.CompareFragment"
+        android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_compare.CompareFragment"
         android:label="StatisticFragment" >
         <action
             android:id="@+id/action_statisticFragment_to_settingsFragment"
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.loan.calculator.loantools.ui.fragment.fragment_settings.SettingsFragment"
+        android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/toolFragment"
-        android:name="com.loan.calculator.loantools.ui.fragment.fragment_tool.ToolFragment"
+        android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_tool.ToolFragment"
         android:label="fragment_tool"
         tools:layout="@layout/fragment_tool" >
         <action

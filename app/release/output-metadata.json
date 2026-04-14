@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.loan.calculator.loantools",
+  "applicationId": "com.screenguard.privacy.screenfilter",
   "variantName": "release",
   "elements": [
     {
@@ -12,8 +12,8 @@
       "filters": [],
       "attributes": [],
       "versionCode": 100,
-      "versionName": "1.0.1",
-      "outputFile": "APP31 Loan VIP1.0.1_04.09.2026-release.apk"
+      "versionName": "1.0.0",
+      "outputFile": "APP37_Privacy_Display_Screen_Filter1.0.0_04.14.2026-release.apk"
     }
   ],
   "elementType": "File",
@@ -22,14 +22,14 @@
       "minApi": 28,
       "maxApi": 30,
       "baselineProfiles": [
-        "baselineProfiles/1/APP31 Loan VIP1.0.1_04.09.2026-release.dm"
+        "baselineProfiles/1/APP37_Privacy_Display_Screen_Filter1.0.0_04.14.2026-release.dm"
       ]
     },
     {
       "minApi": 31,
       "maxApi": 2147483647,
       "baselineProfiles": [
-        "baselineProfiles/0/APP31 Loan VIP1.0.1_04.09.2026-release.dm"
+        "baselineProfiles/0/APP37_Privacy_Display_Screen_Filter1.0.0_04.14.2026-release.dm"
       ]
     }
   ],

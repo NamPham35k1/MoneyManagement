@@ -1,4 +1,4 @@
-package com.loan.calculator.loantools
+package com.screenguard.privacy.screenfilter
 
 import org.junit.Test
 

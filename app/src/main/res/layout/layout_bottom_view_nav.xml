@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="@+id/bgIcon"
         app:layout_constraintTop_toTopOf="@+id/bgIcon" />
 
-    <com.loan.calculator.loantools.custome_view.EllipsizeTextView
+    <com.screenguard.privacy.screenfilter.custome_view.EllipsizeTextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
