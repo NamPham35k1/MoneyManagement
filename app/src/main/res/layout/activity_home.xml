@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_dark">
 
-    <TextView
+    <com.screenguard.privacy.screenfilter.custome_view.MovableText
         android:id="@+id/tvAppName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

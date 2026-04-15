@@ -54,6 +54,8 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
     private var tiltManager: TiltPrivacyManager? = null
     private var isUpdatingUI = false
 
+    private var patternHomeAdapter: PatternHomeAdapter? = null
+
     //
     private var guideStep = 0
     private lateinit var panelManager: PanelManager
@@ -81,7 +83,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         tiltManager?.tiltMode = TiltPrivacyManager.TiltMode.LEFT
 
         enableEdgeToEdge()
-        onBottomClick()
+//        onBottomClick()
 //        collapseBanner = loadCollapseBanner(
 //            this, this,
 //            Constants.AdsKey.collapse_home,
@@ -108,12 +110,12 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         }
     }
 
-    private fun onBottomClick() {
-        val toggle = findViewById<SlideToggleView>(R.id.slideToggle)
-        toggle.onToggleChanged = { isOn ->
-            Log.d("Toggle", "State: $isOn")
-        }
-    }
+//    private fun onBottomClick() {
+//        val toggle = findViewById<SlideToggleView>(R.id.slideToggle)
+//        toggle.onToggleChanged = { isOn ->
+//            Log.d("Toggle", "State: $isOn")
+//        }
+//    }
 
     override fun onResume() {
         super.onResume()
@@ -131,6 +133,11 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             isUpdatingUI = true
             binding.switchOverlay.isChecked = true
             isUpdatingUI = false
+        }
+        //
+        patternHomeAdapter?.let {
+            it.selectedId = sharePrefApp.idPattern
+            it.notifyDataSetChanged()
         }
     }
 
@@ -180,7 +187,6 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
     private fun toggleOverlayPanel() {
         val toggle = findViewById<SlideToggleView>(R.id.slideToggle)
-
         val switchListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
             if (isUpdatingUI) return@OnCheckedChangeListener
             if (sharePrefApp.checktoggle) {
@@ -214,7 +220,10 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
         binding.switchOverlay.setOnCheckedChangeListener(switchListener)
 
-        // TOGGLE MASTER (SlideToggleView)
+
+        toggle.isClickable = false
+
+        // (SlideToggleView)
         toggle.onToggleChanged = { isOn ->
             sharePrefApp.checktoggle = isOn
             val bundle = Bundle().apply {
@@ -255,24 +264,28 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
 
     private fun dataPattern() {
         val data = PatternRepository.getAllPatterns()
-        val adapter = PatternHomeAdapter(data) { sharePrefApp.idPattern = it }
-        binding.rvPattern.adapter = adapter
-
-        adapter.selectedId = sharePrefApp.idPattern
-
+        patternHomeAdapter = PatternHomeAdapter(data) {
+            sharePrefApp.idPattern = it
+        }
+        binding.rvPattern.adapter = patternHomeAdapter
+        patternHomeAdapter?.selectedId = sharePrefApp.idPattern
     }
+
     private fun hasAllPermission(): Boolean {
         return canDrawOverlay() && hasNotificationPermission()
     }
+
     private fun hasNotificationPermission(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) ==
                     PackageManager.PERMISSION_GRANTED
         } else true
     }
+
     override fun onBackPressedSystem() {
         finishAffinity()
     }
+
     //
     private fun startGuide() {
         guideStep = 0
@@ -292,6 +305,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
             }
         }
     }
+
     private fun hideAllGuide() {
         binding.viewDim.visibility = View.GONE
 
@@ -304,6 +318,7 @@ class HomeActivity : BaseActivity<HomeVM, ActivityHomeBinding>() {
         binding.imghtuse3.visibility = View.GONE
         binding.tvhts3.visibility = View.GONE
     }
+
     private fun showGuideStep() {
 
         hideAllGuide()

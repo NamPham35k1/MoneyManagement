@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="@string/how_to_use"
+        android:text="@string/patterns"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/icBack"
         app:layout_constraintEnd_toEndOf="parent"

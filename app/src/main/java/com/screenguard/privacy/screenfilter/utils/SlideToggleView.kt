@@ -26,7 +26,7 @@ class SlideToggleView @JvmOverloads constructor(
         thumb = findViewById(R.id.thumb)
         container = findViewById(R.id.root)
         setupTouch()
-        setupClick()
+//        setupClick()
     }
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -51,12 +51,16 @@ class SlideToggleView @JvmOverloads constructor(
 
                 MotionEvent.ACTION_UP -> {
                     val center = width / 2
+                    val oldState = isOn
                     isOn = view.x > center - view.width / 2
+
                     animateThumb()
-                    notifyState()
+
+                    if (isOn != oldState) {
+                        notifyState()
+                    }
                     true
                 }
-
                 else -> false
             }
         }
