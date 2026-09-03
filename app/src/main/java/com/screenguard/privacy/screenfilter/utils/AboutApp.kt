@@ -5,10 +5,10 @@ import android.content.Intent
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import com.amazic.library.ads.app_open_ads.AppOpenManager
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 
 fun Activity.shareApp() {
-    AppOpenManager.getInstance().disableAppResumeWithActivity(HomeActivity::class.java)
+    AppOpenManager.getInstance().disableAppResumeWithActivity(MainActivity::class.java)
     ShareCompat.IntentBuilder.from(this)
         .setType("text/plain")
         .setChooserTitle("Chooser title")
@@ -17,7 +17,7 @@ fun Activity.shareApp() {
 }
 
 fun Activity.policy() {
-    AppOpenManager.getInstance().disableAppResumeWithActivity(HomeActivity::class.java)
+    AppOpenManager.getInstance().disableAppResumeWithActivity(MainActivity::class.java)
     val url = "https://sites.google.com/vtdglobal.com/personal-loan-loan-tool-policy/home"
     val i = Intent(Intent.ACTION_VIEW)
     i.data = url.toUri()

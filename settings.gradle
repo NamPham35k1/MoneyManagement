@@ -25,5 +25,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "APP37_Privacy_Display_Screen_Filter"
+rootProject.name = "BaseCodeNam"
 include ':app'

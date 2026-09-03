@@ -38,7 +38,6 @@ import com.screenguard.privacy.screenfilter.custome_view.LoadingView
 import com.screenguard.privacy.screenfilter.extention.hideNavigation
 import com.screenguard.privacy.screenfilter.extention.tap
 import com.screenguard.privacy.screenfilter.utils.ViewModelFactory
-
 import com.screenguard.privacy.screenfilter.utils.Constants
 import com.screenguard.privacy.screenfilter.utils.SystemUtil
 import com.screenguard.privacy.screenfilter.R
@@ -47,7 +46,6 @@ import com.screenguard.privacy.screenfilter.ui.defaut_ui.no_internet.NetworkRece
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.no_internet.NoInternetActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.splash.SplashActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.welcome_back.WelcomeBackActivity
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -199,10 +197,10 @@ abstract class BaseActivity<VM : ViewModel, T : ViewBinding> : AppCompatActivity
 //        onBackPressedDispatcher.addCallback(this@BaseActivity, onBackPressedCallback)
 
         //rating, first open
-        if (this is HomeActivity) {
-            sharePrefApp.increaseCountRatingAppear()
-            if (sharePrefApp.isFirstOpenApp) sharePrefApp.isFirstOpenApp = false
-        }
+//        if (this is MainActivity) {
+//            sharePrefApp.increaseCountRatingAppear()
+//            if (sharePrefApp.isFirstOpenApp) sharePrefApp.isFirstOpenApp = false
+//        }
 
     }
     open fun onBackPressedSystem() {

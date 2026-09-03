@@ -110,5 +110,6 @@
     <color name="orange_gradient_end">#EE4700</color>
     <color name="orange_main">#FF7700</color>
     <color name="color_444444">#444444</color>
+    <color name="color_item_dark">#1F1F1F</color>
 
 </resources>

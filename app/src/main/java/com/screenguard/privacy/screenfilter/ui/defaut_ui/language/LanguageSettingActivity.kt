@@ -8,13 +8,13 @@ import androidx.core.content.edit
 import com.screenguard.privacy.screenfilter.ads.AdsHelper
 import com.screenguard.privacy.screenfilter.base.BaseActivity
 import com.screenguard.privacy.screenfilter.extention.logDebug
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
 import com.screenguard.privacy.screenfilter.utils.DataProject
 import com.screenguard.privacy.screenfilter.utils.SystemUtil
 import com.screenguard.privacy.screenfilter.databinding.ActivityLanguageSettingBinding
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.adapter.LanguageAdapter
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.model.LanguageModel
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.model.LanguageSubModel
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 import com.screenguard.privacy.screenfilter.utils.Constants
 
 
@@ -109,7 +109,7 @@ class LanguageSettingActivity : BaseActivity<LanguageViewModel, ActivityLanguage
     }
 
     private fun startNextAct() {
-        showActivity(HomeActivity::class.java, null)
+        showActivity(MainActivity::class.java, null)
         finishAffinity()
     }
 }

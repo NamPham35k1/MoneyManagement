@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.screenguard.privacy.screenfilter.ui.fragment.framgent_home.HomeFragment"
+        android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_home.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
@@ -37,8 +37,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_statisticFragment"
             app:destination="@id/compareFragment" />
@@ -52,8 +51,7 @@
     <fragment
         android:id="@+id/toolFragment"
         android:name="com.screenguard.privacy.screenfilter.ui.fragment.fragment_tool.ToolFragment"
-        android:label="fragment_tool"
-        tools:layout="@layout/fragment_tool" >
+        android:label="fragment_tool">
         <action
             android:id="@+id/action_toolFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/state_ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/compareFragment"
+        android:icon="@drawable/state_ic_compare"
+        android:title="Protect" />
+    <item
+        android:id="@+id/toolFragment"
+        android:icon="@drawable/state_ic_tool"
+        android:title="Pattern" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/state_ic_setting"
+        android:title="@string/setting" />
+</menu>

@@ -27,7 +27,7 @@ import com.screenguard.privacy.screenfilter.extention.tap
 import com.screenguard.privacy.screenfilter.extention.visible
 import com.screenguard.privacy.screenfilter.rate.RatingDialog
 import com.screenguard.privacy.screenfilter.rate.SharePrefUtils
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 import com.screenguard.privacy.screenfilter.utils.Constants
 import com.screenguard.privacy.screenfilter.R
 import com.screenguard.privacy.screenfilter.ads.AdsHelper
@@ -243,7 +243,7 @@ class TutorialActivity : BaseActivity<CommonVM, ActivityTutorialBinding>() {
     private fun startNextAct() {
         val openHome = sharePrefApp.isFirstOpenApp
         if (!openHome) {
-            showActivity(HomeActivity::class.java, null)
+            showActivity(MainActivity::class.java, null)
             finishAffinity()
         } else {
             showActivity(PermissionActivity::class.java, null)

@@ -22,9 +22,9 @@ import com.screenguard.privacy.screenfilter.extention.isQPlus
 import com.screenguard.privacy.screenfilter.extention.isTiRaMiSu
 import com.screenguard.privacy.screenfilter.extention.openAppPermissionSettings
 import com.screenguard.privacy.screenfilter.extention.visible
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
 import com.screenguard.privacy.screenfilter.utils.PermissionManager
 import com.screenguard.privacy.screenfilter.databinding.LayoutBtsPerBinding
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 import kotlin.apply
 import kotlin.collections.all
 import kotlin.collections.any
@@ -46,7 +46,7 @@ class PermissionBts(
     private val dialog by lazy {
         DialogPer {
             AppOpenManager.getInstance()
-                .disableAppResumeWithActivity(HomeActivity::class.java)
+                .disableAppResumeWithActivity(MainActivity::class.java)
             context.openAppPermissionSettings()
         }
     }

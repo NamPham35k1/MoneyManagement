@@ -14,7 +14,7 @@ import com.screenguard.privacy.screenfilter.databinding.ActivityWelcomeBackBindi
 import com.screenguard.privacy.screenfilter.databinding.ActivityWellcomeBinding
 import com.screenguard.privacy.screenfilter.extention.tap
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.welcome_back.WelcomeBackViewModel
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 import com.screenguard.privacy.screenfilter.utils.Constants
 
 class WelcomeActivity : BaseActivity<WelcomeBackViewModel, ActivityWellcomeBinding>() {
@@ -23,7 +23,7 @@ class WelcomeActivity : BaseActivity<WelcomeBackViewModel, ActivityWellcomeBindi
     override fun getViewDataBinding(): ActivityWellcomeBinding = ActivityWellcomeBinding.inflate(layoutInflater)
     override fun initView() {
         binding.tvStart.tap {
-            showActivity(HomeActivity::class.java, null)
+            showActivity(MainActivity::class.java, null)
             finish()
         }
         loadNative(

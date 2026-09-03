@@ -2,37 +2,25 @@ package com.screenguard.privacy.screenfilter.ui.feature
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.GridLayoutManager
-import com.amazic.library.Utils.EventTrackingHelper
 import com.screenguard.privacy.screenfilter.BuildConfig
 import com.screenguard.privacy.screenfilter.R
 import com.screenguard.privacy.screenfilter.ads.AdsHelper
 import com.screenguard.privacy.screenfilter.base.BaseActivity
-import com.screenguard.privacy.screenfilter.databinding.ActivityPartternsBinding
+import com.screenguard.privacy.screenfilter.base.CommonVM
 import com.screenguard.privacy.screenfilter.databinding.ActivitySettingBinding
 import com.screenguard.privacy.screenfilter.extention.logDebug
 import com.screenguard.privacy.screenfilter.extention.tap
 import com.screenguard.privacy.screenfilter.rate.RatingDialog
 import com.screenguard.privacy.screenfilter.rate.SharePrefUtils
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.LanguageSettingActivity
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeVM
-import com.screenguard.privacy.screenfilter.ui.feature.pattern.PatternAdapter
 import com.screenguard.privacy.screenfilter.utils.DataProject
-import com.screenguard.privacy.screenfilter.utils.PatternRepository
 import com.screenguard.privacy.screenfilter.utils.SystemUtil
 import com.screenguard.privacy.screenfilter.utils.policy
-import com.tiktok.appevents.base.EventName
 
-class SettingActivity : BaseActivity<HomeVM, ActivitySettingBinding>() {
+class SettingActivity : BaseActivity<CommonVM, ActivitySettingBinding>() {
 
-    override fun createViewModel(): Class<HomeVM> = HomeVM::class.java
+    override fun createViewModel(): Class<CommonVM> = CommonVM::class.java
     override fun getViewDataBinding(): ActivitySettingBinding = ActivitySettingBinding.inflate(layoutInflater)
     override fun initView() {
         binding.ivBack.tap { onBackPressedSystem() }

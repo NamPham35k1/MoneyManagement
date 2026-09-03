@@ -18,7 +18,7 @@ import com.screenguard.privacy.screenfilter.dialog.DialogPer
 import com.screenguard.privacy.screenfilter.extention.isTiRaMiSu
 import com.screenguard.privacy.screenfilter.extention.openAppPermissionSettings
 import com.screenguard.privacy.screenfilter.extention.tap
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeActivity
+import com.screenguard.privacy.screenfilter.ui.feature.main.MainActivity
 import com.screenguard.privacy.screenfilter.utils.Constants
 import com.screenguard.privacy.screenfilter.utils.PermissionManager
 import android.provider.Settings
@@ -74,7 +74,7 @@ class PermissionActivity : BaseActivity<CommonVM, ActivityPermissionBinding>() {
 
         binding.tvContinue.tap {
             EventTrackingHelper.logEvent(this, Constants.TrackingKeys.permission_continue_click)
-            showActivity(HomeActivity::class.java, null)
+            showActivity(MainActivity::class.java, null)
             finishAffinity()
         }
 
