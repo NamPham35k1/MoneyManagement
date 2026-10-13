@@ -11,11 +11,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.amazic.library.Utils.EventTrackingHelper
-import com.amazic.library.Utils.RemoteConfigHelper
-import com.amazic.library.ads.admob.Admob
-import com.amazic.library.ads.admob.AdmobApi
-import com.amazic.library.organic.TechManager
+import com.vifarmer.ads.lib.Utils.EventTrackingHelper
+import com.vifarmer.ads.lib.Utils.RemoteConfigHelper
+import com.vifarmer.ads.lib.admob.Admob
+import com.vifarmer.ads.lib.admob.AdmobApi
 import com.google.android.gms.ads.interstitial.InterstitialAdPreloader
 import com.screenguard.privacy.screenfilter.extention.logDebug
 import com.google.android.gms.ads.nativead.NativeAd
@@ -38,6 +37,7 @@ import com.screenguard.privacy.screenfilter.share_pref.SharePrefApp
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.LanguageStartActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.permission.PermissionActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.wellcome.WelcomeActivity
+import com.vifarmer.ads.lib.organic.TechManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -11,12 +11,12 @@ plugins {
 
 android {
     namespace 'com.screenguard.privacy.screenfilter'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.screenguard.privacy.screenfilter"
         minSdk 24
-        targetSdk 35
+        targetSdk 36
         versionCode 100
         versionName "1.0.0"
 
@@ -79,6 +79,11 @@ android {
             exclude group: "com.google.android.play", module: "core"
         }
     }
+    packaging {
+        resources {
+            excludes += '/META-INF/versions/9/OSGI-INF/MANIFEST.MF'
+        }
+    }
 }
 
 dependencies {
@@ -113,7 +118,7 @@ dependencies {
     implementation(libs.ssp.android)
 
     // Ads & Mediation
-    implementation(libs.amazic.library)
+    implementation libs.vifarmeradslib
     implementation(libs.google.play.review)
     implementation(libs.facebook.shimmer)
     implementation(libs.google.play.services.ads)

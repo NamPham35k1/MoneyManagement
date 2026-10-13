@@ -7,17 +7,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 
 import androidx.lifecycle.lifecycleScope
-import com.amazic.library.Utils.EventTrackingHelper
-import com.amazic.library.Utils.NetworkUtil
-import com.amazic.library.Utils.RemoteConfigHelper
-import com.amazic.library.ads.admob.Admob
-import com.amazic.library.ads.admob.AdmobApi
-import com.amazic.library.ads.app_open_ads.AppOpenManager
-import com.amazic.library.ads.callback.AppOpenCallback
-import com.amazic.library.ads.callback.InterCallback
-import com.amazic.library.ads.callback.NativeCallback
-import com.amazic.library.ads.splash_ads.AsyncSplash
-import com.amazic.library.update_app.UpdateApplicationManager
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.install.InstallStateUpdatedListener
@@ -31,6 +20,17 @@ import com.screenguard.privacy.screenfilter.databinding.ActivitySplashBinding
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.language.LanguageStartActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.no_internet.NoInternetActivity
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.welcome_back.WelcomeBackActivity
+import com.vifarmer.ads.lib.Utils.EventTrackingHelper
+import com.vifarmer.ads.lib.Utils.NetworkUtil
+import com.vifarmer.ads.lib.Utils.RemoteConfigHelper
+import com.vifarmer.ads.lib.admob.Admob
+import com.vifarmer.ads.lib.admob.AdmobApi
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
+import com.vifarmer.ads.lib.ads.splash_ads.AsyncSplash
+import com.vifarmer.ads.lib.callback.AppOpenCallback
+import com.vifarmer.ads.lib.callback.InterCallback
+import com.vifarmer.ads.lib.callback.NativeCallback
+import com.vifarmer.ads.lib.update_app.UpdateApplicationManager
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

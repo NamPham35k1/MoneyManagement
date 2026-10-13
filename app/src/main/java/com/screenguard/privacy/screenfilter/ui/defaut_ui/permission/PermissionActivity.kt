@@ -7,8 +7,8 @@ import android.net.Uri
 import android.os.Build
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import com.amazic.library.Utils.EventTrackingHelper
-import com.amazic.library.ads.app_open_ads.AppOpenManager
+import com.vifarmer.ads.lib.Utils.EventTrackingHelper
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
 import com.screenguard.privacy.screenfilter.ads.AdsHelper
 import com.screenguard.privacy.screenfilter.ads.NativeType
 import com.screenguard.privacy.screenfilter.base.BaseActivity

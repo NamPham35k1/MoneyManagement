@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 
-import com.amazic.library.ads.app_open_ads.AppOpenManager
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
 import com.screenguard.privacy.screenfilter.base.BaseActivity
 import com.screenguard.privacy.screenfilter.extention.tap
 import com.screenguard.privacy.screenfilter.databinding.ActivityNoInternetBinding

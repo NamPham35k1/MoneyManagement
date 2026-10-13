@@ -4,26 +4,26 @@ import android.app.Activity
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
-import com.amazic.library.Utils.RemoteConfigHelper
-import com.amazic.library.ads.admob.Admob
-import com.amazic.library.ads.admob.AdmobApi
-import com.amazic.library.ads.app_open_ads.AppOpenManager
-import com.amazic.library.ads.banner_ads.BannerBuilder
-import com.amazic.library.ads.banner_ads.BannerManager
-import com.amazic.library.ads.callback.InterCallback
-import com.amazic.library.ads.callback.NativeCallback
-import com.amazic.library.ads.callback.RewardedCallback
-import com.amazic.library.ads.collapse_banner_ads.CollapseBannerBuilder
-import com.amazic.library.ads.collapse_banner_ads.CollapseBannerManager
-import com.amazic.library.ads.inter_ads.InterManager
-import com.amazic.library.ads.native_ads.NativeBuilder
-import com.amazic.library.ads.native_ads.NativeManager
-import com.amazic.library.ads.reward_ads.RewardManager
-import com.amazic.library.organic.TechManager
+import com.vifarmer.ads.lib.Utils.RemoteConfigHelper
+import com.vifarmer.ads.lib.admob.Admob
+import com.vifarmer.ads.lib.admob.AdmobApi
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
+import com.vifarmer.ads.lib.callback.InterCallback
+import com.vifarmer.ads.lib.callback.NativeCallback
+import com.vifarmer.ads.lib.callback.RewardedCallback
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.screenguard.privacy.screenfilter.R
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.splash.SplashActivity
 import com.screenguard.privacy.screenfilter.utils.Constants
+import com.vifarmer.ads.lib.ads.banner_ads.BannerBuilder
+import com.vifarmer.ads.lib.ads.banner_ads.BannerManager
+import com.vifarmer.ads.lib.ads.collapse_banner_ads.CollapseBannerBuilder
+import com.vifarmer.ads.lib.ads.collapse_banner_ads.CollapseBannerManager
+import com.vifarmer.ads.lib.ads.inter_ads.InterManager
+import com.vifarmer.ads.lib.ads.native_ads.NativeBuilder
+import com.vifarmer.ads.lib.ads.native_ads.NativeManager
+import com.vifarmer.ads.lib.ads.reward_ads.RewardManager
+import com.vifarmer.ads.lib.organic.TechManager
 
 object AdsHelper {
     fun dismissAppOpen(activity: Activity) {
@@ -246,7 +246,14 @@ object AdsHelper {
                 idLayoutNativeMeta = R.layout.native_small_ads_meta
             }
         }
-        val nativeBuilder = NativeBuilder(activity, frAds, idLayoutShimmer, idLayoutNative, idLayoutNativeMeta, true)
+        val nativeBuilder = NativeBuilder(
+            activity,
+            frAds,
+            idLayoutShimmer,
+            idLayoutNative,
+            idLayoutNativeMeta,
+            true
+        )
         nativeBuilder.setListIdAdMain(AdmobApi.getInstance().getListIDByName(adsKeyMain))
         //set secondary list id ads if load double native
         nativeBuilder.setListIdAdSecondary(AdmobApi.getInstance().getListIDByName(adsKeySecondary))

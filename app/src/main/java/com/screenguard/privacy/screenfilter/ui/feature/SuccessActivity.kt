@@ -9,14 +9,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.room.util.findColumnIndexBySuffix
 import com.screenguard.privacy.screenfilter.R
 import com.screenguard.privacy.screenfilter.base.BaseActivity
+import com.screenguard.privacy.screenfilter.base.CommonVM
 import com.screenguard.privacy.screenfilter.databinding.ActivityHomeBinding
 import com.screenguard.privacy.screenfilter.databinding.ActivitySuccessBinding
 import com.screenguard.privacy.screenfilter.extention.tap
-import com.screenguard.privacy.screenfilter.ui.feature.home.HomeVM
 
-class SuccessActivity : BaseActivity<HomeVM, ActivitySuccessBinding>() {
+class SuccessActivity : BaseActivity<CommonVM, ActivitySuccessBinding>() {
 
-    override fun createViewModel(): Class<HomeVM> = HomeVM::class.java
+    override fun createViewModel(): Class<CommonVM> = CommonVM::class.java
     override fun getViewDataBinding(): ActivitySuccessBinding = ActivitySuccessBinding.inflate(layoutInflater)
     override fun initView() {
 

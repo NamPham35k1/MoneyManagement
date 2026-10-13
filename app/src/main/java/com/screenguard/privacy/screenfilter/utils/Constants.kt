@@ -21,6 +21,7 @@ object Constants {
 
         const val open_splash = "open_splash"
         const val inter_splash = "inter_splash"
+        const val ani_cta_native = "ani_cta_native"
         const val native_language = "native_language"
         const val native_language_2 = "native_language_2"
         const val native_click = "native_click"

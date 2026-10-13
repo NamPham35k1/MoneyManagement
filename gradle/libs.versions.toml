@@ -1,7 +1,7 @@
 [versions]
-agp = "8.6.0"
-hiltAndroid = "2.51.1"
-kotlin = "2.0.20"
+agp = "8.7.0"
+hiltAndroid = "2.56.2"
+kotlin = "2.1.0"
 googleServices = "4.4.4"
 firebaseCrashlyticsPlugin = "3.0.6"
 #----------------------
@@ -20,7 +20,7 @@ espressoCore = "3.5.1"
 glide = "4.16.0"
 sdp = "1.1.1"
 ssp = "1.1.1"
-amazicLibrary = "2.3.9"
+vifarmeradslib = "1.2.6.4_update_fun"
 playReview = "2.0.2"
 shimmer = "0.5.0"
 playServicesAds = "24.8.0"
@@ -82,7 +82,8 @@ sdp-android = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "s
 ssp-android = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "ssp" }
 
 # Ads & Mediation
-amazic-library = { group = "com.github.DuongNT3012", name = "AmazicLibrary", version.ref = "amazicLibrary" }
+vifarmeradslib = { module = "com.github.ruanyangshuaige:VIFarmerAdsLib", version.ref = "vifarmeradslib" }
+
 google-play-review = { group = "com.google.android.play", name = "review", version.ref = "playReview" }
 facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 google-play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
@@ -151,6 +152,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-gms-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
-kotlin-ksp = { id = "com.google.devtools.ksp", version = "2.0.20-1.0.25" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version = "2.1.0-1.0.29" }
 hilt = { id = "com.google.dagger.hilt.android", version = "2.51.1" }
 

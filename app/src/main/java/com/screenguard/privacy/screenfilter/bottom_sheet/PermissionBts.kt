@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import com.amazic.library.ads.app_open_ads.AppOpenManager
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
 import com.screenguard.privacy.screenfilter.base.BaseBottomSheetFragment
 import com.screenguard.privacy.screenfilter.dialog.DialogPer
 import com.screenguard.privacy.screenfilter.extention.clickWithBounce

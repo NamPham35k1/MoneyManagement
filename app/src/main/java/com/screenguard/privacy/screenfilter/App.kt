@@ -1,9 +1,8 @@
 package com.screenguard.privacy.screenfilter
 
-import com.amazic.library.ads.app_open_ads.AppOpenManager
-import com.amazic.library.application.AdsApplication
-import com.screenguard.privacy.screenfilter.share_pref.SharePrefApp
+import com.vifarmer.ads.lib.ads.app_open_ads.AppOpenManager
 import com.screenguard.privacy.screenfilter.ui.defaut_ui.splash.SplashActivity
+import com.vifarmer.ads.lib.application.AdsApplication
 import dagger.hilt.android.HiltAndroidApp
 import kotlin.jvm.java
 @HiltAndroidApp
@@ -24,5 +23,9 @@ class App : AdsApplication(){
 
     override fun getFacebookID(): String {
         return getString(R.string.facebook_app_id)
+    }
+
+    override fun buildDebug(): Boolean {
+        return false
     }
 }

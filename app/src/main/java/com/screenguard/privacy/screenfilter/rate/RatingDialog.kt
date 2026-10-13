@@ -12,7 +12,7 @@ import android.widget.RatingBar
 import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
-import com.amazic.library.Utils.EventTrackingHelper
+import com.vifarmer.ads.lib.Utils.EventTrackingHelper
 import com.screenguard.privacy.screenfilter.extention.setEnableState
 import com.screenguard.privacy.screenfilter.utils.Constants
 import com.screenguard.privacy.screenfilter.R
