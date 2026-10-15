@@ -164,13 +164,10 @@ abstract class BaseActivity<VM : ViewModel, T : ViewBinding> : AppCompatActivity
 
 
     private fun hideNavigationBar() {
-        enableEdgeToEdge()
-        window.hideNavigation()
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        this@BaseActivity.window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.statusBarColor = androidx.core.content.ContextCompat.getColor(this, R.color.mam_bg)
+            androidx.core.view.WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+        }
     }
 
     private fun baseView() {
@@ -198,13 +195,8 @@ abstract class BaseActivity<VM : ViewModel, T : ViewBinding> : AppCompatActivity
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (currentApiVersion >= Build.VERSION_CODES.KITKAT && hasFocus) {
-            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        if (hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            androidx.core.view.WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         }
     }
 

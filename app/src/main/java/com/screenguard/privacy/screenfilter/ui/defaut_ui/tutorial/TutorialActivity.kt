@@ -246,10 +246,9 @@ class TutorialActivity : BaseActivity<CommonVM, ActivityTutorialBinding>() {
             showActivity(MainActivity::class.java, null)
             finishAffinity()
         } else {
-            showActivity(PermissionActivity::class.java, null)
+            showActivity(com.screenguard.privacy.screenfilter.ui.feature.onboarding.OnboardingMoneyActivity::class.java, null)
             finishAffinity()
         }
-
     }
 
     private fun setupIndicators(count: Int) {

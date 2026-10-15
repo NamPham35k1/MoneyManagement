@@ -1,9 +1,904 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_dark">
+    android:background="@color/mam_bg"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="100dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp">
+
+        <!-- Top Header: Logo, Brand & Actions -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivLogoHome"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_mam_logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/ivLogoHome"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:text="Mầm Money ◆"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="@string/mam_slogan"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivBell"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_mam_bell" />
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_mam_avatar" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- Greeting pill bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_mam_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_24pt_bold"
+                android:text="@string/mam_greeting"
+                android:textColor="@color/mam_text_primary"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_check_mam"
+                app:tint="@color/mam_primary" />
+        </LinearLayout>
+
+        <!-- Card 1: Số dư khả dụng (Available Balance) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_mam_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Label + Eye toggle + Badge -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/layoutToggleBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_available_balance"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:id="@+id/ivEyeToggle"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="6dp"
+                        android:src="@drawable/ic_eye_visible" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_mam_pill_green"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp"
+                    android:text="@string/mam_status_stable"
+                    android:textColor="@color/mam_primary_dark"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Main Amount -->
+            <TextView
+                android:id="@+id/tvAvailableBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/inter_24pt_bold"
+                android:text="8.450.000 đ"
+                android:textColor="@color/mam_text_primary"
+                android:textSize="30sp" />
+
+            <!-- Sub Cards: Thu nhập tháng / Đã chi tiêu -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <!-- Left: Thu nhập tháng -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/bg_mam_pill_green"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_arrow_income" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_monthly_income"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvMonthlyIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="+12.000.000 đ"
+                            android:textColor="@color/mam_primary_dark"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Right: Đã chi tiêu -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="#FDECEC"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_arrow_expense" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_monthly_spent"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvMonthlyExpense"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="-3.550.000 đ"
+                            android:textColor="@color/mam_expense_red"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Card 2: Chi an toàn hôm nay (Safe-to-Spend Today) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_mam_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivShield"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_shield_safe" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/ivShield"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:text="@string/mam_safe_to_spend_today"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp"
+                    android:text="@string/mam_safe_to_spend_days_left"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Big Daily Safe Amount -->
+            <TextView
+                android:id="@+id/tvDailySafeSpend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_24pt_bold"
+                android:text="280.000 đ/ngày"
+                android:textColor="@color/mam_primary_dark"
+                android:textSize="26sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/inter_24pt_regular"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/mam_safe_to_spend_desc"
+                android:textColor="@color/mam_text_secondary"
+                android:textSize="12sp" />
+
+            <!-- Sub stat tags -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnBillPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="● Hóa đơn: 1.800.000 đ"
+                    android:textColor="@color/mam_warning_amber"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="● Tiết kiệm: 1.000.000 đ"
+                    android:textColor="@color/mam_primary"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="● Khả dụng: 3.650.000 đ"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Banner: Insight -->
+        <LinearLayout
+            android:id="@+id/cardInsight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_mam_card_mint"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_mam_pill_white"
+                android:padding="4dp"
+                android:src="@drawable/ic_sparkle_insight" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/mam_insight_text"
+                android:textColor="@color/mam_text_primary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Card 3: Ngân sách tháng 10 -->
+        <LinearLayout
+            android:id="@+id/cardBudgetMonthly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_mam_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_october_budget"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="@string/mam_budget_limit_all"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="44%"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="@string/mam_budget_safe"
+                        android:textColor="@color/mam_primary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressBarMonthlyBudget"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="12dp"
+                android:max="100"
+                android:progress="44"
+                android:progressDrawable="@drawable/progress_bar_mam_green" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="Đã dùng 3.550.000 đ"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="Hạn mức 8.000.000 đ"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- 3 Category Budget Items -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <!-- Ăn uống 1.450k -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="12dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_cat_food"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_food"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="1.450k"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Mua sắm 920k -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="12dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_cat_shopping"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_shopping"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="920k"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Di chuyển 480k -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="12dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_cat_transport"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_transport"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="480k"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Section: Giao dịch gần đây (Recent Transactions) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_bold"
+                android:text="@string/mam_recent_transactions"
+                android:textColor="@color/mam_text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnSeeAllTransactions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/inter_24pt_semibold"
+                android:text="Xem tất cả >"
+                android:textColor="@color/mam_primary"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <!-- Recent Transactions Card List -->
+        <LinearLayout
+            android:id="@+id/layoutRecentTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_mam_card"
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp">
+
+            <!-- Item 1: Cà phê sáng & Bánh mì -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/ivIconTx1"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_mam_pill_green"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_coffee_item"
+                    app:tint="@color/mam_primary_dark" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/ivIconTx1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="Cà phê sáng &amp; Bánh mì"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="Ăn uống • Tiền mặt"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="-45.000 đ"
+                        android:textColor="@color/mam_expense_red"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="08:15"
+                        android:textColor="@color/mam_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mam_divider" />
+
+            <!-- Item 2: Siêu thị WinMart -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/ivIconTx2"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_mam_pill_green"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_cart_item"
+                    app:tint="@color/mam_primary_dark" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/ivIconTx2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="Siêu thị WinMart"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="Ăn uống • Ví MoMo"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="-320.000 đ"
+                        android:textColor="@color/mam_expense_red"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="Hôm qua"
+                        android:textColor="@color/mam_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mam_divider" />
+
+            <!-- Item 3: Tiền điện tháng 10 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/ivIconTx3"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_lightning_item" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/ivIconTx3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="Tiền điện tháng 10"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="Hóa đơn • Techcombank"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="-640.000 đ"
+                        android:textColor="@color/mam_expense_red"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="24/10"
+                        android:textColor="@color/mam_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Goal Banner: Quỹ dự phòng khẩn cấp -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_mam_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_mam_pill_gray"
+                android:padding="5dp"
+                android:src="@drawable/ic_piggy_item" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:text="@string/mam_emergency_fund"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="@string/mam_emergency_fund_progress"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -11,9 +11,16 @@ import com.screenguard.privacy.screenfilter.model.MortgageModel
 import com.screenguard.privacy.screenfilter.model.RecurringDepositModel
 import com.screenguard.privacy.screenfilter.model.TypeWallpaperConverter
 
+import com.screenguard.privacy.screenfilter.model.TransactionEntity
+import com.screenguard.privacy.screenfilter.model.BudgetEntity
+
 @Database(
-    entities = [LoanModel::class, MortgageModel::class, BusinessLoanModel::class, AutoLoanModel::class, FixedDepositModel::class, RecurringDepositModel::class],
-    version = 1,
+    entities = [
+        LoanModel::class, MortgageModel::class, BusinessLoanModel::class,
+        AutoLoanModel::class, FixedDepositModel::class, RecurringDepositModel::class,
+        TransactionEntity::class, BudgetEntity::class
+    ],
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(TypeWallpaperConverter::class)
@@ -24,5 +31,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun daoAutoLoan(): AutoLoanDao
     abstract fun daoFixDeposit(): FixedDepositDao
     abstract fun daoRecurring(): RecurringDepositDao
-
+    abstract fun transactionDao(): TransactionDao
+    abstract fun budgetDao(): BudgetDao
 }

@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Circle background -->
+    <path
+        android:fillColor="#D8F3DC"
+        android:pathData="M24,0A24,24 0 1,0 24,48A24,24 0 1,0 24,0z" />
+    <!-- Plant stem -->
+    <path
+        android:strokeColor="#1B4332"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M24,28V15" />
+    <!-- Leaves -->
+    <path
+        android:fillColor="#1B4332"
+        android:pathData="M24,18c-3,-5 -10,-4 -10,1 4,1 9,-1 10,-1z" />
+    <path
+        android:fillColor="#1B4332"
+        android:pathData="M24,14c3,-5 10,-4 10,1 -4,1 -9,-1 -10,-1z" />
+    <!-- Flower Pot -->
+    <path
+        android:strokeColor="#1B4332"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#1B4332"
+        android:pathData="M16,28h16l-2,8h-12z" />
+    <path
+        android:strokeColor="#1B4332"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M14,28h20" />
+</vector>

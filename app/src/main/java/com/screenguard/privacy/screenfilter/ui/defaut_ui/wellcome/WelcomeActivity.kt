@@ -23,7 +23,11 @@ class WelcomeActivity : BaseActivity<WelcomeBackViewModel, ActivityWellcomeBindi
     override fun getViewDataBinding(): ActivityWellcomeBinding = ActivityWellcomeBinding.inflate(layoutInflater)
     override fun initView() {
         binding.tvStart.tap {
-            showActivity(MainActivity::class.java, null)
+            if (sharePrefApp.isFirstOpenApp) {
+                showActivity(com.screenguard.privacy.screenfilter.ui.feature.onboarding.OnboardingMoneyActivity::class.java, null)
+            } else {
+                showActivity(MainActivity::class.java, null)
+            }
             finish()
         }
         loadNative(

@@ -18,6 +18,10 @@ class MainActivity : BaseActivity<MainActivityVM, ActivityMainBinding>() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
+
+        binding.btnFloatingAdd.setOnClickListener {
+            showActivity(com.screenguard.privacy.screenfilter.ui.feature.add_transaction.AddTransactionActivity::class.java, null)
+        }
     }
 
     override fun bindViewModel() {

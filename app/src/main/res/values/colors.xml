@@ -112,4 +112,37 @@
     <color name="color_444444">#444444</color>
     <color name="color_item_dark">#1F1F1F</color>
 
+    <!-- Mầm Money Brand Colors -->
+    <color name="mam_primary_dark">#1B4332</color>
+    <color name="mam_primary">#2D6A4F</color>
+    <color name="mam_primary_light">#E8F5EE</color>
+    <color name="mam_primary_pale">#F0F8F3</color>
+    <color name="mam_leaf_accent">#38A169</color>
+    <color name="mam_bg">#F7F8F5</color>
+    <color name="mam_card_bg">#FFFFFF</color>
+    <color name="mam_text_primary">#1A1D1A</color>
+    <color name="mam_text_secondary">#5C645C</color>
+    <color name="mam_text_muted">#8F998F</color>
+    <color name="mam_expense_red">#D32F2F</color>
+    <color name="mam_expense_pale">#FDECEC</color>
+    <color name="mam_income_green">#2E7D32</color>
+    <color name="mam_income_pale">#E8F5E9</color>
+    <color name="mam_warning_amber">#E69B00</color>
+    <color name="mam_warning_pale">#FEF8E7</color>
+    <color name="mam_info_blue">#1976D2</color>
+    <color name="mam_info_pale">#E3F2FD</color>
+    <color name="mam_border">#E6ECE6</color>
+    <color name="mam_divider">#EFF3EF</color>
+    <color name="mam_keypad_bg">#FFFFFF</color>
+    <color name="mam_keypad_btn_bg">#FFFFFF</color>
+    <color name="mam_keypad_special_bg">#ECEFEA</color>
+    <color name="mam_badge_active_bg">#E2F4E8</color>
+    <color name="mam_badge_active_text">#1B4332</color>
+    <color name="mam_category_selected_bg">#E3F2E8</color>
+    <color name="mam_category_unselected_bg">#FFFFFF</color>
+    <color name="mam_nav_selected">#1B4332</color>
+    <color name="mam_nav_unselected">#7A857A</color>
+    <color name="mam_pill_bg">#F0F3F0</color>
+    <color name="mam_progress_track">#E2E8E2</color>
+
 </resources>

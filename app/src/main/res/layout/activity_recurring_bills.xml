@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mam_bg">
+
+    <!-- Top App Bar -->
+    <RelativeLayout
+        android:id="@+id/layoutTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="12dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_left"
+            app:tint="@color/mam_text_primary" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/ivBack"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/inter_24pt_bold"
+                android:maxLines="1"
+                android:text="@string/mam_recurring_title"
+                android:textColor="@color/mam_text_primary"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_24pt_medium"
+                android:text="@string/mam_recurring_subtitle"
+                android:textColor="@color/mam_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivHelp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="7dp"
+                android:src="@drawable/ic_mam_help" />
+
+            <ImageView
+                android:id="@+id/ivMore"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="7dp"
+                android:src="@drawable/ic_mam_more_vert" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layoutBottomAction"
+        android:layout_below="@id/layoutTopBar"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="6dp">
+
+            <!-- Sub Header Context -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <ImageView
+                    android:id="@+id/ivSproutCycle"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_mam_pill_green"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_recurring_cycle"
+                    app:tint="@color/mam_primary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/ivSproutCycle"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_sec_title"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="@string/mam_recurring_month_desc"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_pill_mint_light"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/mam_recurring_chip_week"
+                    android:textColor="@color/mam_primary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Card 1: 7 ngày sắp tới Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_pill_red_light"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="3dp">
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/circle_red" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_badge_7days"
+                            android:textColor="@color/mam_expense_red"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_recurring_prepare_label"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_prepare_amount"
+                            android:textColor="@color/mam_primary_dark"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:text="@string/mam_recurring_banner_count"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/inter_24pt_regular"
+                    android:text="@string/mam_recurring_banner_desc"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_recurring_progress_label"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_progress_val"
+                        android:textColor="@color/mam_primary"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:max="100"
+                    android:progress="84"
+                    android:progressDrawable="@drawable/progress_bar_mam_green" />
+            </LinearLayout>
+
+            <!-- Section 1: Sắp đến hạn thanh toán -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ic_mam_bell"
+                        app:tint="@color/mam_warning_amber" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_due_section"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="@string/mam_recurring_sort_deadline"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Item Due 1: Tiền Điện EVN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivEvnIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_pill_red_light"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_lightning_item"
+                        app:tint="@color/mam_expense_red" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivEvnIcon"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_24pt_bold"
+                                android:text="@string/mam_recurring_evn_title"
+                                android:textColor="@color/mam_text_primary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_pill_red_light"
+                                android:fontFamily="@font/inter_24pt_semibold"
+                                android:paddingHorizontal="7dp"
+                                android:paddingVertical="2dp"
+                                android:text="@string/mam_recurring_evn_badge"
+                                android:textColor="@color/mam_expense_red"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_recurring_evn_due"
+                            android:textColor="@color/mam_expense_red"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_evn_amount"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_evn_code"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:background="@color/mam_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/ic_date"
+                            app:tint="@color/mam_text_secondary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_recurring_evn_remind"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnMarkEvnPaid"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@color/mam_primary_dark"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:paddingHorizontal="14dp"
+                        android:text="@string/mam_recurring_mark_paid"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:cornerRadius="18dp"
+                        app:icon="@drawable/ic_check_mam"
+                        app:iconSize="14dp"
+                        app:iconTint="@color/white" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Item Due 2: Gói Spotify Premium -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivSpotifyIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_pill_mint_light"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_music_note" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivSpotifyIcon"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_24pt_bold"
+                                android:text="@string/mam_recurring_spotify_title"
+                                android:textColor="@color/mam_text_primary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_mam_pill_gray"
+                                android:fontFamily="@font/inter_24pt_semibold"
+                                android:paddingHorizontal="7dp"
+                                android:paddingVertical="2dp"
+                                android:text="@string/mam_recurring_spotify_badge"
+                                android:textColor="@color/mam_text_secondary"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_recurring_spotify_due"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_spotify_amount"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_spotify_card"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:background="@color/mam_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/ic_mam_bell"
+                            app:tint="@color/mam_text_secondary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_recurring_auto_remind"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchSpotify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/mam_primary"
+                            app:trackTint="@color/mam_primary_light" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_switch_on"
+                            android:textColor="@color/mam_primary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Section 2: Đã thanh toán tháng này -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ic_check_mam"
+                        app:tint="@color/mam_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_paid_section"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="@string/mam_recurring_paid_count"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Paid items card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical">
+
+                <!-- Paid 1: Internet FPT -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivFptIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_bill_wifi" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivFptIcon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_fpt_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_fpt_due"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_24pt_bold"
+                                android:text="@string/mam_recurring_fpt_amount"
+                                android:textColor="@color/mam_text_primary"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_marginStart="4dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/mam_text_secondary" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_semibold"
+                            android:text="@string/mam_recurring_status_paid"
+                            android:textColor="@color/mam_primary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/mam_divider" />
+
+                <!-- Paid 2: Tiền thuê căn hộ -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivRentIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_cat_housing" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivRentIcon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_rent_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_rent_due"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_24pt_bold"
+                                android:text="@string/mam_recurring_rent_amount"
+                                android:textColor="@color/mam_text_primary"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_marginStart="4dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/mam_text_secondary" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_semibold"
+                            android:text="@string/mam_recurring_status_paid"
+                            android:textColor="@color/mam_primary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/mam_divider" />
+
+                <!-- Paid 3: Nước sinh hoạt Sawaco -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:id="@+id/ivWaterIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_bill_water" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivWaterIcon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_water_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_water_due"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_24pt_bold"
+                                android:text="@string/mam_recurring_water_amount"
+                                android:textColor="@color/mam_text_primary"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_marginStart="4dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="@color/mam_text_secondary" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_semibold"
+                            android:text="@string/mam_recurring_status_paid"
+                            android:textColor="@color/mam_primary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Section 3: Thu nhập định kỳ bổ trợ -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="6dp"
+                        android:src="@drawable/ic_cat_salary"
+                        app:tint="@color/mam_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_income_section"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:text="@string/mam_recurring_income_sub"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <!-- Income item card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivSalaryIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_pill_mint_light"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_cat_salary" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/ivSalaryIcon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_salary_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_salary_due"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_salary_amount"
+                            android:textColor="@color/mam_income_green"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_regular"
+                            android:text="@string/mam_recurring_salary_acc"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Section 4: Tỷ lệ dòng tiền định kỳ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@drawable/ic_cat_housing"
+                            app:tint="@color/mam_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_recurring_ratio_section"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_recurring_ratio_badge"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <!-- Multi-segment bar -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="12dp"
+                    android:clipToOutline="true"
+                    android:orientation="horizontal">
+
+                    <!-- Hóa đơn 37% -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="37"
+                        android:background="@color/mam_primary_dark" />
+
+                    <!-- Chi tiêu linh hoạt 33% -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="33"
+                        android:background="@color/mam_warning_amber" />
+
+                    <!-- Dự tích lũy 30% -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="30"
+                        android:background="@color/mam_progress_track" />
+                </LinearLayout>
+
+                <!-- Legend -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Dot 1 -->
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/circle_green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="@string/mam_recurring_legend_bills"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <!-- Dot 2 -->
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginStart="14dp"
+                        android:background="@drawable/circle_orange" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="@string/mam_recurring_legend_flex"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+
+                    <!-- Dot 3 -->
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginStart="14dp"
+                        android:background="@drawable/bg_mam_pill_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:text="@string/mam_recurring_legend_saving"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card: Privacy Notice -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_mam_card"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_pill_mint_light"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_shield_safe"
+                    app:tint="@color/mam_primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_recurring_privacy_title"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:lineSpacingExtra="3dp"
+                        android:text="@string/mam_recurring_privacy_desc"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Action Button Sticky Container -->
+    <FrameLayout
+        android:id="@+id/layoutBottomAction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/mam_bg"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddRecurringBill"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/mam_primary_dark"
+            android:fontFamily="@font/inter_24pt_bold"
+            android:text="@string/mam_recurring_btn_add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="16dp" />
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mam_bg">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp">
+
+            <!-- Top Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnBackOnboarding"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_arrow_left"
+                    app:tint="@color/mam_text_primary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/btnBackOnboarding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:maxLines="1"
+                        android:text="@string/mam_onboard_header"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_app_name"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/mam_text_secondary" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="6dp"
+                        android:src="@drawable/ic_cat_other"
+                        app:tint="@color/mam_text_secondary" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Hero Section: Pot sprout, Badge, Headline -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_mam_card_mint"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_sprout_pot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mam_pill_white"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/mam_onboard_badge"
+                    android:textColor="@color/mam_primary_dark"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:gravity="center"
+                    android:text="@string/mam_onboard_headline"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/inter_24pt_regular"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/mam_onboard_subhead"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="13sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="● Khởi tạo tài chính (1/3)"
+                        android:textColor="@color/mam_primary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_onboard_duration"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Step 1: Mục đích sử dụng -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:background="@drawable/bg_mam_pill_green"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/mam_primary_dark"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_step1_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_step1_sub"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <!-- Option 1: Theo dõi thu chi hằng ngày -->
+                <LinearLayout
+                    android:id="@+id/optionGoal1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_cat_bill"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_goal_daily_tracking"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbGoal1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:buttonTint="@color/mam_primary_dark" />
+                </LinearLayout>
+
+                <!-- Option 2: Kiểm soát ngân sách thông minh -->
+                <LinearLayout
+                    android:id="@+id/optionGoal2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_recurring_cycle"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_goal_smart_budget"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbGoal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:buttonTint="@color/mam_primary_dark" />
+                </LinearLayout>
+
+                <!-- Option 3: Tích lũy cho mục tiêu tương lai -->
+                <LinearLayout
+                    android:id="@+id/optionGoal3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_piggy_item"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_goal_future_saving"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+
+                    <CheckBox
+                        android:id="@+id/cbGoal3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:buttonTint="@color/mam_primary_dark" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Step 2: Thu nhập hàng tháng dự kiến -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:background="@drawable/bg_mam_pill_green"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="@color/mam_primary_dark"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/inter_24pt_bold"
+                            android:text="@string/mam_step2_title"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnSkipStep2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_skip"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <!-- Input Amount Box -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_cat_salary"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <EditText
+                        android:id="@+id/edtExpectedIncome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:inputType="number"
+                        android:text="12.000.000 đ"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <!-- Tip Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_mam_card_warning"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_bulb_yellow" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_24pt_regular"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/mam_step2_tip"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Step 3: Ngày nhận thu nhập chính -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/bg_mam_pill_green"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/mam_primary_dark"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_step3_title"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Dropdown selector: Ngày 10 hàng tháng -->
+                <LinearLayout
+                    android:id="@+id/btnSalaryDayPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_calendar_mam" />
+
+                    <TextView
+                        android:id="@+id/tvSalaryDayDisplay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="@string/mam_step3_value"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_down"
+                        app:tint="@color/mam_text_secondary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/inter_24pt_regular"
+                    android:text="@string/mam_step3_tip"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- Card: Bảo mật trên hết -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_mam_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_mam_pill_green"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_shield_safe" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="Bảo mật trên hết ●"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/inter_24pt_regular"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/mam_security_desc"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Secondary link: Tôi đã có tài khoản / Khôi phục sao lưu -->
+            <LinearLayout
+                android:id="@+id/btnRestoreBackup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_cloud_restore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:text="@string/mam_already_have_account"
+                    android:textColor="@color/mam_primary_dark"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Full Width CTA: Bắt đầu hành trình trồng mầm -> -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/mam_bg"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartJourney"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/mam_primary_dark"
+            android:fontFamily="@font/inter_24pt_bold"
+            android:text="@string/mam_start_journey"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="16dp"
+            app:elevation="4dp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

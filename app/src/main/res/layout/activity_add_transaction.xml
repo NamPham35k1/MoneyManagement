@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mam_bg">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="90dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp">
+
+            <!-- Top Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_arrow_left"
+                    app:tint="@color/mam_text_primary" />
+
+                <ImageView
+                    android:id="@+id/ivHeaderLogo"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/btnBack"
+                    android:src="@drawable/ic_mam_logo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/ivHeaderLogo"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:text="@string/mam_add_tx_title"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_app_name"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivHeaderAvatar"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_mam_avatar" />
+            </RelativeLayout>
+
+            <!-- Segmented Control: Chi tiền / Thu tiền -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_segmented_container"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/btnTypeExpense"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_segmented_selected"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:gravity="center"
+                    android:text="• Chi tiền"
+                    android:textColor="@color/mam_expense_red"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/btnTypeIncome"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/inter_24pt_medium"
+                    android:gravity="center"
+                    android:text="Thu tiền"
+                    android:textColor="@color/mam_text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Amount Input Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_mam_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_mam_logo"
+                        app:tint="@color/mam_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/mam_tx_amount"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvAmountDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:text="- 85.000 đ"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="32sp" />
+
+                <!-- Quick amount additions -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnQuickAdd50k"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:text="+50k"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnQuickAdd100k"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:text="+100k"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnQuickAdd200k"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:text="+200k"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnQuickClear"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_mam_pill_gray"
+                        android:fontFamily="@font/inter_24pt_bold"
+                        android:gravity="center"
+                        android:text="C"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Categories Section Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_24pt_bold"
+                    android:text="@string/mam_categories"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvSelectedCategoryHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:text="🍽️ Ăn uống"
+                    android:textColor="@color/mam_primary"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <!-- Categories Grid (8 items) -->
+            <!-- Row 1: Ăn uống, Di chuyển, Mua sắm, Nhà ở -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/catFood"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_selected"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatFood"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_food"
+                        app:tint="@color/mam_primary_dark" />
+
+                    <TextView
+                        android:id="@+id/tvCatFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:text="@string/cat_food"
+                        android:textColor="@color/mam_primary_dark"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catTransport"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatTransport"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_transport"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatTransport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_transport"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catShopping"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatShopping"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_shopping"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatShopping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_shopping"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catHousing"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatHousing"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_housing"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatHousing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_housing"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 2: Hóa đơn, Giải trí, Sức khỏe, Khác -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/catBills"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatBills"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_bill"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatBills"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_bills"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catEntertainment"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatEntertainment"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_entertainment"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatEntertainment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_entertainment"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catHealth"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatHealth"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_health"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatHealth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_health"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/catOther"
+                    android:layout_width="0dp"
+                    android:layout_height="76dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_item_normal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivCatOther"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_cat_other"
+                        app:tint="@color/mam_text_primary" />
+
+                    <TextView
+                        android:id="@+id/tvCatOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_24pt_medium"
+                        android:text="@string/cat_other"
+                        android:textColor="@color/mam_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Form Row: Date picker & Wallet Selector -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Left: Thời gian -->
+                <LinearLayout
+                    android:id="@+id/btnPickDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/bg_mam_pill_green"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_calendar_mam" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_time"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvDateDisplay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_semibold"
+                            android:text="Hôm nay, 24/10"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Right: Nguồn tiền -->
+                <LinearLayout
+                    android:id="@+id/btnPickWallet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_mam_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/ivWalletIcon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_momo_circle" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_medium"
+                            android:text="@string/mam_source_of_fund"
+                            android:textColor="@color/mam_text_secondary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvWalletDisplay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_24pt_semibold"
+                            android:text="Ví MoMo"
+                            android:textColor="@color/mam_text_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_down"
+                        app:tint="@color/mam_text_secondary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Note Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_mam_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_note_pencil"
+                    app:tint="@color/mam_text_secondary" />
+
+                <EditText
+                    android:id="@+id/edtNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@null"
+                    android:fontFamily="@font/inter_24pt_regular"
+                    android:hint="@string/mam_note_hint"
+                    android:textColor="@color/mam_text_primary"
+                    android:textColorHint="@color/mam_text_muted"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Recurring Toggle Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_mam_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_mam_pill_gray"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_recurring_cycle"
+                    app:tint="@color/mam_text_secondary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_24pt_semibold"
+                    android:text="@string/mam_monthly_recurring"
+                    android:textColor="@color/mam_text_primary"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchRecurring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:useMaterialThemeColors="true" />
+            </LinearLayout>
+
+            <!-- Custom Numeric Keypad -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <!-- Row 1: 1, 2, 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnKey1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+                <!-- Row 2: 4, 5, 6 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnKey4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+                <!-- Row 3: 7, 8, 9 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnKey7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="8"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey9"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="9"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+                <!-- Row 4: .000, 0, Backspace -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnKeyTripleZero"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text=".000"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/btnKey0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_key"
+                        android:fontFamily="@font/inter_24pt_semibold"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/mam_text_primary"
+                        android:textSize="22sp" />
+
+                    <FrameLayout
+                        android:id="@+id/btnKeyBackspace"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_keypad_special">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_keypad_delete"
+                            app:tint="@color/mam_text_primary" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Full Width CTA Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/mam_bg"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/mam_primary_dark"
+            android:fontFamily="@font/inter_24pt_bold"
+            android:text="@string/mam_save_transaction"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="16dp"
+            app:elevation="4dp"
+            app:icon="@drawable/ic_check_save"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconSize="20dp"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

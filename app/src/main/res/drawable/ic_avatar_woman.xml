@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <path
+        android:fillColor="#E2E8E0"
+        android:pathData="M32,0A32,32 0,1 0,64,32A32,32 0,0 0,32,0z"/>
+    <!-- Hair back -->
+    <path
+        android:fillColor="#4E342E"
+        android:pathData="M20,18C20,12 24,8 32,8s12,4 12,10v14C44,32 40,40 32,40s-12,-8 -12,-8z"/>
+    <!-- Face -->
+    <path
+        android:fillColor="#FFD9B3"
+        android:pathData="M24,20c0,-5 3.58,-9 8,-9s8,4 8,9v7c0,4.42 -3.58,8 -8,8s-8,-3.58 -8,-8z"/>
+    <!-- Hair bangs -->
+    <path
+        android:fillColor="#3E2723"
+        android:pathData="M24,19c2,-4 5,-6 8,-6s6,2 8,6c-3,-2 -6,-2 -8,-1s-5,2 -8,1z"/>
+    <!-- Body / Green outfit -->
+    <path
+        android:fillColor="#2D6A4F"
+        android:pathData="M16,56c0,-8 7.16,-15 16,-15s16,7 16,15v8H16z"/>
+    <!-- Collar / necklace -->
+    <path
+        android:fillColor="#FFD9B3"
+        android:pathData="M30,41h4v4h-4z"/>
+</vector>

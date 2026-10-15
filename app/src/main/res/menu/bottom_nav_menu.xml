@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/state_ic_home"
-        android:title="@string/home" />
+        android:icon="@drawable/ic_nav_overview"
+        android:title="@string/mam_tab_overview" />
     <item
         android:id="@+id/compareFragment"
-        android:icon="@drawable/state_ic_compare"
-        android:title="Protect" />
+        android:icon="@drawable/ic_nav_tx"
+        android:title="@string/mam_tab_transactions" />
     <item
         android:id="@+id/toolFragment"
-        android:icon="@drawable/state_ic_tool"
-        android:title="Pattern" />
+        android:icon="@drawable/ic_nav_budget"
+        android:title="@string/mam_tab_budget" />
     <item
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/state_ic_setting"
-        android:title="@string/setting" />
+        android:icon="@drawable/ic_nav_goal"
+        android:title="@string/mam_tab_goals" />
 </menu>
